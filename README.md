@@ -9,3 +9,9 @@ https://www.porcine.com/gps/dg/dg_frameset.html
 https://www.porcine.com/gps/sc/sc_frameset.html
 <h1>Theory of Operation</h1>
 
+<p>Refer to dg_cpl_shts.pdf</p>
+<p>Power Supply - Ship power PWR_14_IN is on J1:pin 1.  Power Ground is on J1:pin14.  C18 provides a capacitive short to RF EMI.  U7 is an integrated regulator that includes short circuit overload protection, thermal protection, and limited input voltage overload protection.  Several similar devices are available in the same footprint.  C28 provides local input decoupling.  R25, R28, and R29 set the output to 9 Volts.  C10 and C11 are selected to for output stability.  Refer to the BOM or Parts list for exact components.  Note these are selected for proper impedance over temperature.</p>
+<p> Oscillator - The 400 Hz oscillator is made using the 555 timing chip.  Note that components for C4 and C5 are in the BOM and selected for stability over temperature.  The output drives the AC Heading Excite Out (HDG_EXC_OUT) and the syncronous detection circuit.</p>
+<p>Heading Excite - The DG reference coil is driven from the resistive bridge made by R32 - R35.  These are larger resistors to dissipate heat.  Q1 provides the switching.  The result with the coil is an alternate ramp waveform.  HDG_EXC is on J1:pin 2. NOTE: the return for this signal is on J1:pin 14.  Recommend twisting this pair of wires to the gyro.</p>
+<p>Synchronous Detection - AC_HDG (J1:pin 3) comes from the gyro pick up coil.  The reference side is connected to GNDA (J1:pin 15).  The 400 Hz reference serves to rectify AC_HDG using U1A and U2.  The output signal has a DC average proportional to the heading bug offset.</p>
+<p>Filter, Null and Gain - R10, C2 and C27 form a single pole low pass filter.  Additional current is summed at this junction from R9 and RV1 to provide a null adjustment to center up the gyro.  R8 and RV2 form a divider that allows the gain to be adjustable.</p>
